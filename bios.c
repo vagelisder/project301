@@ -81,7 +81,7 @@ static unsigned int ncores = 0;
 /* Core barrier */
 static pthread_barrier_t system_barrier, core_barrier;
 
-/* Flag that signals that PIC daemon should be active */
+/* Flag that signals that PIC daemon shouldhttps://github.com/vagelisder/project301 be active */
 static volatile sig_atomic_t PIC_active;
 
 /* Mutex for implementing core halt */
@@ -157,7 +157,7 @@ static void PIC_daemon();  /* forward def */
 	Static func to access the thread-local Core.
 */
 _Thread_local uint cpu_core_id;
-static inline Core* curr_core() {
+static inline Core* curr_core() {https://github.com/vagelisder/project301
 	return CORE+cpu_core_id;
 }
 
@@ -181,7 +181,7 @@ static inline void interrupt_pic_thread()
 */
 static void* bootfunc_wrapper(void* _core)
 {
-	Core* core = (Core*)_core;
+	Core* core = (Core*)_core;https://github.com/vagelisder/project301
 
 	/* Default interrupt handlers */
 	for(int i=0; i<maximum_interrupt_no; i++) {
@@ -201,7 +201,7 @@ static void* bootfunc_wrapper(void* _core)
 
 	/* create a thread-specific timer */
 	core->timer_sigevent.sigev_notify = SIGEV_SIGNAL;
-	core->timer_sigevent.sigev_signo = SIGALRM;
+	core->timer_sigevent.sigev_signo = https://github.com/vagelisder/project301SIGALRM;
 	core->timer_sigevent.sigev_value.sival_int = core->id;
 	CHECK(timer_create(CLOCK_REALTIME, & core->timer_sigevent, & core->timer_id));
 
